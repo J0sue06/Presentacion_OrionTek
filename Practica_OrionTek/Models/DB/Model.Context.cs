@@ -28,7 +28,6 @@ namespace Practica_OrionTek.Models.DB
     
         public virtual DbSet<cliente> clientes { get; set; }
         public virtual DbSet<direccione> direcciones { get; set; }
-        public virtual DbSet<log> logs { get; set; }
         public virtual DbSet<usuario> usuarios { get; set; }
         public virtual DbSet<pais> paises { get; set; }
     }

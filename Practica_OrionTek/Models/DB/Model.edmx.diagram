@@ -7,11 +7,8 @@
       <Diagram DiagramId="f840933264be423c833241039bf027ce" Name="Diagram1">
         <EntityTypeShape EntityType="oriontekModel.cliente" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="oriontekModel.direccione" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="oriontekModel.log" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="oriontekModel.usuario" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="oriontekModel.fk_cliente" ManuallyRouted="false" />
-        <AssociationConnector Association="oriontekModel.fk_cliente_logs" ManuallyRouted="false" />
-        <AssociationConnector Association="oriontekModel.fk_usuario_logs" ManuallyRouted="false" />
         <EntityTypeShape EntityType="oriontekModel.pais" Width="1.5" PointX="0.75" PointY="0.75" />
         <AssociationConnector Association="oriontekModel.fk_pais" />
       </Diagram>

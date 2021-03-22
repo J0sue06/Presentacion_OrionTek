@@ -9,7 +9,6 @@
     <Property Name="apellido" Type="String" MaxLength="65" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="direcciones" Relationship="Self.fk_cliente" FromRole="clientes" ToRole="direcciones" />
-    <NavigationProperty Name="logs" Relationship="Self.fk_cliente_logs" FromRole="clientes" ToRole="logs" />
   </EntityType>
   <EntityType Name="direccione">
     <Key>
@@ -26,18 +25,6 @@
     <Property Name="id_pais" Type="Int32" />
     <NavigationProperty Name="pais1" Relationship="oriontekModel.fk_pais" FromRole="direccione" ToRole="pais" />
   </EntityType>
-  <EntityType Name="log">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="id_usuario" Type="Int32" />
-    <Property Name="id_cliente" Type="Int32" />
-    <Property Name="tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="fecha" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="cliente" Relationship="Self.fk_cliente_logs" FromRole="logs" ToRole="clientes" />
-    <NavigationProperty Name="usuario" Relationship="Self.fk_usuario_logs" FromRole="logs" ToRole="usuarios" />
-  </EntityType>
   <EntityType Name="usuario">
     <Key>
       <PropertyRef Name="id" />
@@ -47,7 +34,6 @@
     <Property Name="apellido" Type="String" MaxLength="95" FixedLength="false" Unicode="false" />
     <Property Name="email" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
     <Property Name="pass" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="logs" Relationship="Self.fk_usuario_logs" FromRole="usuarios" ToRole="logs" />
   </EntityType>
   <Association Name="fk_cliente">
     <End Role="clientes" Type="Self.cliente" Multiplicity="0..1" />
@@ -61,46 +47,13 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="fk_cliente_logs">
-    <End Role="clientes" Type="Self.cliente" Multiplicity="0..1" />
-    <End Role="logs" Type="Self.log" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="clientes">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="logs">
-        <PropertyRef Name="id_cliente" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="fk_usuario_logs">
-    <End Role="usuarios" Type="Self.usuario" Multiplicity="0..1" />
-    <End Role="logs" Type="Self.log" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="usuarios">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="logs">
-        <PropertyRef Name="id_usuario" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="clientes" EntityType="Self.cliente" />
     <EntitySet Name="direcciones" EntityType="Self.direccione" />
-    <EntitySet Name="logs" EntityType="Self.log" />
     <EntitySet Name="usuarios" EntityType="Self.usuario" />
     <AssociationSet Name="fk_cliente" Association="Self.fk_cliente">
       <End Role="clientes" EntitySet="clientes" />
       <End Role="direcciones" EntitySet="direcciones" />
-    </AssociationSet>
-    <AssociationSet Name="fk_cliente_logs" Association="Self.fk_cliente_logs">
-      <End Role="clientes" EntitySet="clientes" />
-      <End Role="logs" EntitySet="logs" />
-    </AssociationSet>
-    <AssociationSet Name="fk_usuario_logs" Association="Self.fk_usuario_logs">
-      <End Role="usuarios" EntitySet="usuarios" />
-      <End Role="logs" EntitySet="logs" />
     </AssociationSet>
     <EntitySet Name="paises" EntityType="oriontekModel.pais" />
     <AssociationSet Name="fk_pais" Association="oriontekModel.fk_pais">

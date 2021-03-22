@@ -14,19 +14,10 @@ namespace Practica_OrionTek.Models.DB
     
     public partial class usuario
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public usuario()
-        {
-            this.logs = new HashSet<log>();
-        }
-    
         public int id { get; set; }
         public string nombre { get; set; }
         public string apellido { get; set; }
         public string email { get; set; }
         public string pass { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<log> logs { get; set; }
     }
 }

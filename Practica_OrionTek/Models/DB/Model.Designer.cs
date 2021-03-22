@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\Trabajos\OrionTek\3\Practica_OrionTek\Practica_OrionTek\Models\DB\Model.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\orionTek\2\Presentacion_OrionTek\Practica_OrionTek\Models\DB\Model.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

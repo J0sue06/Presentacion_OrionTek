@@ -11,31 +11,16 @@ namespace Practica_OrionTek.Models.DB
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class direccione
     {
         public int id { get; set; }
         public Nullable<int> id_cliente { get; set; }
-
-        [Required(ErrorMessage = "The Address Line 1 field cannot be empty")]
-        [MinLength(3, ErrorMessage = "The Address Line 1 field should have more than 4 characters")]
         public string line1 { get; set; }
-
-        [Required(ErrorMessage = "The Address Line 2 field cannot be empty")]
-        [MinLength(3, ErrorMessage = "The Address Line 2 field should have more than 4 characters")]
         public string line2 { get; set; }
-
-        [Required(ErrorMessage = "The County field cannot be empty")]
-        [MinLength(3, ErrorMessage = "The County Line 1 field should have more than 4 characters")]
         public string sector { get; set; }
-
-        [Required(ErrorMessage = "The City field cannot be empty")]
-        [MinLength(3, ErrorMessage = "The City field should have more than 4 characters")]
         public string ciudad { get; set; }
-
         public Nullable<int> zipcode { get; set; }
-
         public Nullable<int> id_pais { get; set; }
     
         public virtual cliente cliente { get; set; }

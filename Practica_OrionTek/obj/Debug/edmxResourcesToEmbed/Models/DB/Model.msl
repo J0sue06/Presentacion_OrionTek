@@ -25,17 +25,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="logs">
-      <EntityTypeMapping TypeName="oriontekModel.log">
-        <MappingFragment StoreEntitySet="logs">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
-          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
-          <ScalarProperty Name="tipo" ColumnName="tipo" />
-          <ScalarProperty Name="fecha" ColumnName="fecha" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="usuarios">
       <EntityTypeMapping TypeName="oriontekModel.usuario">
         <MappingFragment StoreEntitySet="usuarios">
