@@ -1,0 +1,69 @@
+﻿
+@{
+    var info = ViewBag.detailsClient;
+    var address = ViewBag.addressClient;
+
+    int contador = 1;
+}
+
+<section class="d-flex flex-col justify-content-center responsive-x-padding mt-5 mb-5">
+    <h3>Client Details</h3>
+    <div class="d-flex justify-content-start align-items-center">
+        <h2 class="mt-2 pr-2"><b>@info.nombre @info.apellido</b></h2>
+        <a class="trash-can pr-2" data-id="@info.id" title="Delete Client" id="deleteClient"><i class="bi bi-trash"></i></a>
+        <a class="trash-can"href="/Home/UpdateClient/@info.id" title="Update Client"><i class="bi bi-gear"></i></a>
+    </div>
+    <div class="d-flex justify-content-between">
+        <h3 class="description"><i class="bi bi-telephone-fill pr-2 accent"></i> @info.telefono</h3>
+    </div>
+</section>
+
+<section class="d-flex flex-col justify-content-center responsive-x-padding mt-5 mb-2">
+    <div class="d-flex justify-content-between">
+        <h3><span>@info.nombre</span>'s addresses</h3>
+        <div class="col-lg-4 d-flex justify-content-end no-bootstrap-padding">
+            <a href="/Home/NewAddress/@info.id" class="btn btn-success"><i class="bi bi-geo-alt"></i> New Address</a>
+        </div>
+    </div>
+</section>
+
+<section class="d-flex responsive-x-padding scroll-result">
+    <table class="table table-borderless">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Address Line 1</th>
+                <th scope="col">Address Line 2</th>
+                <th scope="col">County</th>
+                <th>City</th>
+                <th>Country</th>
+                <th>Zipcode</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in address)
+            {
+            <tr class="background-secondary mb-3 custom-tr">
+                <td scope="row">@contador</td>
+                <td>@item.line1</td>
+                <td>@item.line2</td>
+                <td>@item.sector</td>
+                <td>@item.ciudad</td>
+                <td>@item.pais</td>
+                <td>@item.zipcode</td>                
+                <td class="d-flex">
+                    <a class="pencil pr-2" href="/Home/UpdateAddress/?idAddress=@item.id&idClient=@info.id"><i class="bi bi-pencil"></i> Update</a>
+                    <button class="trash-can btn_delete" type="button" data-id="@item.id"><i class="bi bi-trash"></i> Delete</button>
+                </td>
+            </tr>
+                contador++;
+            }
+
+        </tbody>
+    </table>
+</section>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/js/client/deleteAddress.js"></script>

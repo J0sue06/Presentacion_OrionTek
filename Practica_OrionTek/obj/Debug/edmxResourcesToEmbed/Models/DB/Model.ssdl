@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="oriontekModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="clientes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="65" Nullable="false" />
+    <Property Name="apellido" Type="varchar" MaxLength="65" Nullable="false" />
+    <Property Name="telefono" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="direcciones">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_cliente" Type="int" />
+    <Property Name="id_pais" Type="int" />
+    <Property Name="line1" Type="text" />
+    <Property Name="line2" Type="text" />
+    <Property Name="sector" Type="varchar" MaxLength="135" />
+    <Property Name="ciudad" Type="varchar" MaxLength="95" />
+    <Property Name="zipcode" Type="int" />
+  </EntityType>
+  <EntityType Name="logs">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_usuario" Type="int" />
+    <Property Name="id_cliente" Type="int" />
+    <Property Name="tipo" Type="varchar" MaxLength="50" />
+    <Property Name="fecha" Type="datetime" />
+  </EntityType>
+  <EntityType Name="paises">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pais" Type="varchar" MaxLength="135" />
+  </EntityType>
+  <EntityType Name="usuarios">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="95" />
+    <Property Name="apellido" Type="varchar" MaxLength="95" />
+    <Property Name="email" Type="varchar" MaxLength="120" />
+    <Property Name="pass" Type="varchar" MaxLength="120" />
+  </EntityType>
+  <Association Name="fk_cliente">
+    <End Role="clientes" Type="Self.clientes" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="direcciones" Type="Self.direcciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="clientes">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="direcciones">
+        <PropertyRef Name="id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_cliente_logs">
+    <End Role="clientes" Type="Self.clientes" Multiplicity="0..1" />
+    <End Role="logs" Type="Self.logs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="clientes">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="logs">
+        <PropertyRef Name="id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_pais">
+    <End Role="paises" Type="Self.paises" Multiplicity="0..1" />
+    <End Role="direcciones" Type="Self.direcciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="paises">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="direcciones">
+        <PropertyRef Name="id_pais" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_usuario_logs">
+    <End Role="usuarios" Type="Self.usuarios" Multiplicity="0..1" />
+    <End Role="logs" Type="Self.logs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuarios">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="logs">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="oriontekModelStoreContainer">
+    <EntitySet Name="clientes" EntityType="Self.clientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="direcciones" EntityType="Self.direcciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="logs" EntityType="Self.logs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="paises" EntityType="Self.paises" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_cliente" Association="Self.fk_cliente">
+      <End Role="clientes" EntitySet="clientes" />
+      <End Role="direcciones" EntitySet="direcciones" />
+    </AssociationSet>
+    <AssociationSet Name="fk_cliente_logs" Association="Self.fk_cliente_logs">
+      <End Role="clientes" EntitySet="clientes" />
+      <End Role="logs" EntitySet="logs" />
+    </AssociationSet>
+    <AssociationSet Name="fk_pais" Association="Self.fk_pais">
+      <End Role="paises" EntitySet="paises" />
+      <End Role="direcciones" EntitySet="direcciones" />
+    </AssociationSet>
+    <AssociationSet Name="fk_usuario_logs" Association="Self.fk_usuario_logs">
+      <End Role="usuarios" EntitySet="usuarios" />
+      <End Role="logs" EntitySet="logs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

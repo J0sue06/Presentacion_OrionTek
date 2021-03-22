@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/Content/style.css">
+    <!--bootstrap 4.6-->
+    <link rel="stylesheet" href="~/Dependencies/bootstrap-4.6.0-dist/css/bootstrap.min.css">
+    <!--bootstrap icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
+</head>
+<body>
+    <section class="container-fluid d-flex full-height no-bootstrap-padding">
+        <div class="col-lg-2 flex-col background-primary side-nav">
+
+            <div class="logo-container mb-3 mt-3">
+                <a id="logo" href="/Home"><h2 class="pl-3">Oriontek.do</h2></a>
+            </div>
+            <div class="list-group mt-5">
+                <a href="/Home" class="list-group-item active"><i class="bi bi-laptop pr-2"></i> Dashboard</a>
+                <a href="#" class="list-group-item"><i class="bi bi-bar-chart-steps pr-2"></i> Statistics</a>
+                <a href="#" class="list-group-item"><i class="bi bi-chat-left-dots pr-2"></i> Mail</a>
+                <a href="#" class="list-group-item"><i class="bi bi-three-dots-vertical pr-2"></i> Settings</a>
+            </div>
+        </div>
+        <div class="col-lg-10 flex-col background-tertiary no-bootstrap-padding overflow-hidden">
+            <!-- deleted class 'overflow-auto' -->
+            <!--top nav-->
+            <div class="nav-wrap d-flex background-secondary">
+                <div class="nav-content d-flex container-fluid justify-content-between mb-3 mt-3 responsive-x-padding">
+                    <div class="session-user d-flex align-items-center justify-content-around">
+                        <i id="user-icon" class="bi bi-person-circle pr-2 "></i>
+                        <h3 class="no-margin">@Session["userName"].ToString()</h3>
+                    </div>
+                    <div class="session-actions">
+                        <button class="btn btn-outline-danger" type="button" id="logOut"><i class="bi bi-power"></i> Logout</button>
+                    </div>
+                </div>
+            </div>
+            <!--Render View-->
+            @RenderBody()
+        </div>
+    </section>
+
+
+    <!--JQuery-->
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+    <!--Js Files-->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="~/Scripts/js/client/logOut.js"></script>
+
+    <!--Bootstrap-->
+    <script src="~/Dependencies/bootstrap-4.6.0-dist/js/bootstrap.min.js"></script>
+</body>
+</html>

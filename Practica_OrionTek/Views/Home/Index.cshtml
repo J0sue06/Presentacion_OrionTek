@@ -1,0 +1,94 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    var clients = ViewBag.Clients;
+    int contador = 1;
+}
+
+<section class="d-flex flex-col justify-content-center responsive-x-padding mt-5 mb-5">
+    <h2>Search</h2>
+    <div class="d-flex justify-content-between">
+        <div class="col-lg-5 no-bootstrap-padding d-flex">
+            <input class="full-width pl-3" type="text" placeholder="Search parameters..." id="filterClient">
+            <i id="searchIcon" class="bi bi-search"></i>
+        </div>
+        <div class="col-lg-4 d-flex justify-content-end no-bootstrap-padding">
+            <a href="/Home/NewUser" class="btn btn-success mr-2"><i class="bi bi-person-plus"></i> Add new user</a>
+        </div>
+    </div>
+</section>
+
+<div id="homeTable">
+    <section class="d-flex responsive-x-padding scroll-result">
+        <table class="table table-borderless">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Phone</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in clients)
+                {
+                    <tr class="background-secondary mb-3 custom-tr">
+                        <td scope="row">@contador</td>
+                        <td>@item.nombre</td>
+                        <td>@item.apellido</td>
+                        <td>@item.telefono</td>
+                        <td class="d-flex">
+                            <a href="/Home/UserDetails/@item.id" class="pr-4"><i class="bi bi-box-arrow-in-right"></i> View</a>
+                            <button class="trash-can btn_delete" type="button" data-id="@item.id"><i class="bi bi-trash"></i> Delete</button>
+                        </td>
+                    </tr>
+                    contador++;
+                }
+            </tbody>
+        </table>
+    </section>
+</div>
+
+    <!-- <section class="d-flex responsive-x-padding">
+        <table class="table table-borderless">
+            <tbody>
+                @foreach (var item in clients)
+                {
+                    <tr class="background-secondary mb-3 custom-tr">
+                        <td scope="row">@contador</td>
+                        <td>@item.nombre</td>
+                        <td>@item.apellido</td>
+                        <td>@item.telefono</td>
+                        <td class="d-flex">
+                            <a href="/Home/UserDetails/@item.id" class="pr-4"><i class="bi bi-box-arrow-in-right"></i> View</a>
+                            <button class="trash-can btn_delete" type="button" data-id="@item.id"><i class="bi bi-trash"></i> Delete</button>
+                        </td>
+                    </tr>
+                    contador++;
+                }
+            </tbody>
+        </table>
+    </section>-->
+
+
+<div id="filterTable">
+    <section class="d-flex responsive-x-padding">
+        <table class="table table-borderless table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Phone</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="tableFilter">
+                
+            </tbody>
+        </table>
+    </section>
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/js/client/filterClient.js"></script>

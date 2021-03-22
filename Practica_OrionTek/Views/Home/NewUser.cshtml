@@ -1,0 +1,122 @@
+﻿
+@{
+    
+}
+
+<section class="d-flex flex-col justify-content-center responsive-x-padding mt-5 mb-5">
+    <a href="/Home"><h3><i class="bi bi-arrow-left"></i> Go back</h3></a>
+    <div class="d-flex justify-content-between align-items-center">
+        <h2 class="mt-2 pr-2"><b><span><i class="bi bi-person-plus accent pr-2"></i></span>New Client</b></h2>
+        <button class="btn btn-success" type="button" id="saveClient">Save Client</button>
+        <button class="btn btn-success" type="button" id="endProcess">Finalizar</button>
+    </div>
+</section>
+
+<!-- user details -->
+<div id="userDetails">
+    <section class="d-flex flex-col justify-content-center responsive-x-padding mt-5 mb-2">
+        <div class="d-flex justify-content-start align-items-center">
+            <h2 class="mt-2 pr-2"><b>Client Details</b></h2>
+        </div>
+        <div class="d-flex justify-content-between mb-3">
+            <div class="col-lg-4 flex-col pr-2 no-bootstrap-padding">
+                <h3>First Name</h3>
+                <input class="full-width" type="text" id="firstName" />
+            </div>
+
+            <div class="col-lg-4 flex-col pr-2 no-bootstrap-padding">
+                <h3>Last Name</h3>
+                <input class="full-width" type="text" id="lastName" />
+            </div>
+
+            <div class="col-lg-4 flex-col pr-2 no-bootstrap-padding">
+                <h3>Phone</h3>
+                <input class="full-width" type="number" id="phone" />
+            </div>
+        </div>
+
+    </section>
+</div>
+
+
+<!-- add an address -->
+<div id="addressDetails">
+    <section class="d-flex flex-col justify-content-center responsive-x-padding mt-5 mb-2" id="section_address">
+        <div class="d-flex justify-content-between mb-3">
+            <div class="col-lg-4 flex-col pr-2 no-bootstrap-padding">
+                <h3>Address Line 1</h3>
+                <input class="full-width" type="text" id="line1" />
+            </div>
+
+            <div class="col-lg-4 flex-col pr-2 no-bootstrap-padding">
+                <h3>Address Line 2</h3>
+                <input class="full-width" type="text" id="line2" />
+            </div>
+
+            <div class="col-lg-4 flex-col pr-2 no-bootstrap-padding">
+                <h3>County</h3>
+                <input class="full-width" type="text" id="county" />
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-start">
+            <div class="col-lg-4 flex-col pr-2 no-bootstrap-padding">
+                <h3>City</h3>
+                <input class="full-width" type="text" id="city" />
+            </div>
+
+            <div class="col-lg-4 flex-col pr-2 no-bootstrap-padding">
+                <h3>Country</h3>
+                <select class="full-width" id="countrys">
+                    <option selected disabled>Select</option>
+                </select>
+            </div>
+
+            <div class="col-lg-4 flex-col pr-2 no-bootstrap-padding">
+                <h3>Zipcode</h3>
+                <input class="full-width" type="number" id="zipCode" />
+            </div>
+
+        </div>
+
+        <div class="d-flex justify-content-center mt-3">
+            <button class="btn btn-primary" type="button" id="add_Address">Add Address <i class="bi bi-arrow-down-circle"></i></button>
+        </div>
+    </section>
+
+    <section class="d-flex responsive-x-padding scroll-result" id="section_address_list">
+        <table class="table table-borderless">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Address Line 1</th>
+                    <th scope="col">Address Line 2</th>
+                    <th scope="col">County</th>
+                    <th>City</th>
+                    <th>Country</th>
+                    <th>Zipcode</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="addressTable">
+
+                <tr class="background-secondary mb-3 custom-tr">
+                    <td scope="row">0</td>
+                    <td>No data</td>
+                    <td>No data</td>
+                    <td>No data</td>
+                    <td>No data</td>
+                    <td>No data</td>
+                    <td>No data</td>
+                    <td class="d-flex">
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </section>
+</div>
+
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/js/client/add.js"></script>
